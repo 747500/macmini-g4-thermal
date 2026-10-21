@@ -55,7 +55,19 @@ Registers, as in the MAX6642 datasheet and Linux [`drivers/hwmon/max6642.c`](htt
 
 ## Load test
 
-LOAD_TEST_PLACEHOLDER
+`loadtest.sh`: 2 minutes idle, 8 minutes of one `yes` (100% of the single core), 4 minutes of cool-down, a sample every 15 s. Results on a PowerMac10,2 (overclocked to 1.83 GHz, room temperature, mounted on a wall):
+
+| phase | local | remote |
+|---|---|---|
+| idle | 53.0 °C | 49.3 °C |
+| load, +30 s | **57.8** (peak) | **51.5** (peak) |
+| load, end of 8 min | 53.3 | 47.3 |
+| cool-down, +45 s | **48.8** (minimum) | **45.0** |
+| cool-down, +4 min | 53.0 | 49.5 |
+
+The fan speed cannot be read, but its control is visible: both sensors peak right after the load starts and then drop below idle while the load continues. As soon as the load stops they undershoot, then slowly come back to idle. The PMU speeds the fan up, and later slows it down, with a delay.
+
+Under load local rose by +4.8 °C and remote by only +2.3 °C. So it is not confirmed that remote is the CPU diode: it may sit somewhere in the airflow.
 
 ## What does not work, and what was not used
 
