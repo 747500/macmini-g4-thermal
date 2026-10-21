@@ -55,7 +55,7 @@ Registers, as in the MAX6642 datasheet and Linux [`drivers/hwmon/max6642.c`](htt
 
 ## Load test
 
-`loadtest.sh`: 2 minutes idle, 8 minutes of one `yes` (100% of the single core), 4 minutes of cool-down, a sample every 15 s. Results on a PowerMac10,2 (overclocked to 1.83 GHz, room temperature, mounted on a wall):
+`loadtest.sh`: 2 minutes idle, 8 minutes of one `yes` (100% of the single core), 4 minutes of cool-down, a sample every 15 s. Results on a PowerMac10,2 (overclocked to 1.83 GHz, mounted on a wall; room temperature not measured):
 
 | phase | local | remote |
 |---|---|---|
